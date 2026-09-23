@@ -201,7 +201,7 @@
   @media (max-width: 900px) { .nav-links { display: none; } }
   @media (max-width: 500px) { .nav-github { display: none; } }
 
-  /* ============ ★ MOBILE — HAMBURGER ============ */
+  /* ============ HAMBURGER MOBILE ============ */
   .nav-hamburger {
     display: none;
     width: 40px;
@@ -223,9 +223,7 @@
     border-color: var(--emerald);
     background: var(--emerald-glow);
   }
-  .nav-hamburger:active {
-    transform: scale(0.95);
-  }
+  .nav-hamburger:active { transform: scale(0.95); }
   .nav-hamburger span {
     display: block;
     width: 18px;
@@ -237,19 +235,10 @@
                 width 0.3s ease;
     transform-origin: center;
   }
-  /* Estado aberto: transforma as 3 barras num X */
-  .nav-hamburger.open span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-  }
-  .nav-hamburger.open span:nth-child(2) {
-    opacity: 0;
-    width: 0;
-  }
-  .nav-hamburger.open span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-  /* Painel dropdown mobile */
   .nav-mobile-panel {
     position: fixed;
     top: 72px;
@@ -306,7 +295,6 @@
     opacity: 0.6;
   }
 
-  /* Backdrop escurecido atrás do painel */
   .nav-mobile-backdrop {
     position: fixed;
     inset: 0;
@@ -323,13 +311,9 @@
     visibility: visible;
   }
 
-  /* Mostrar hamburger apenas em ecrãs pequenos */
   @media (max-width: 900px) {
-    .nav-hamburger {
-      display: inline-flex;
-    }
+    .nav-hamburger { display: inline-flex; }
   }
-  /* Segurança: esconder painel mobile em ecrãs grandes */
   @media (min-width: 901px) {
     .nav-mobile-panel,
     .nav-mobile-backdrop { display: none; }
@@ -588,10 +572,61 @@
   .feature-tag.violet { background: rgba(168, 85, 247, 0.15); color: var(--violet); }
   .feature-tag.amber { background: rgba(245, 158, 11, 0.15); color: var(--amber); }
 
-  /* ============ SCREENSHOT MOCKUP ============ */
+  /* ============ INTERFACE — TABS ============ */
+  .interface-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  .interface-tab {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .interface-tab:hover {
+    color: var(--text-main);
+    border-color: var(--border-glow);
+    background: var(--bg-card-hover);
+    transform: translateY(-2px);
+  }
+  .interface-tab.active {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.20) 0%, rgba(56, 189, 248, 0.12) 100%);
+    border-color: var(--emerald);
+    color: var(--text-main);
+    box-shadow: 0 8px 24px var(--emerald-glow);
+  }
+
+  .interface-panels {
+    position: relative;
+    min-height: 500px;
+  }
+  .interface-panel {
+    display: none;
+    animation: panelFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .interface-panel.active { display: block; }
+  @keyframes panelFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ BROWSER MOCKUP ============ */
   .mockup-wrapper {
     perspective: 1400px;
-    margin: 40px 0;
+    margin: 0 0 24px 0;
   }
   .browser-mockup {
     background: var(--bg-surface);
@@ -602,7 +637,7 @@
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .browser-mockup:hover {
-    transform: rotateX(2deg) rotateY(-2deg) translateY(-6px);
+    transform: rotateX(1deg) rotateY(-1deg) translateY(-4px);
   }
   .browser-bar {
     display: flex;
@@ -624,124 +659,73 @@
     text-align: center;
     margin: 0 12px;
   }
-  .browser-content {
-    padding: 32px;
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 24px;
-    min-height: 420px;
+
+  /* Imagem dentro do browser frame */
+  .browser-screenshot {
+    display: block;
+    width: 100%;
+    height: auto;
     background: var(--bg-base);
   }
-  @media (max-width: 760px) {
-    .browser-content { grid-template-columns: 1fr; padding: 20px; }
-    .mockup-sidebar { display: none; }
-  }
-  .mockup-sidebar {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 16px;
-    height: fit-content;
-  }
-  .mockup-sidebar-title {
-    font-size: 11px;
-    font-weight: 800;
+
+  /* Placeholder caso a imagem não exista */
+  .browser-screenshot-fallback {
+    padding: 60px 40px;
+    text-align: center;
     color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 12px;
-  }
-  .mockup-nav-item {
-    padding: 8px 12px;
-    border-radius: 8px;
     font-size: 13px;
-    color: var(--text-muted);
-    margin-bottom: 4px;
+    background: var(--bg-base);
+    min-height: 400px;
     display: flex;
     align-items: center;
-    gap: 10px;
-  }
-  .mockup-nav-item.active {
-    background: var(--emerald-glow);
-    color: var(--emerald);
-    font-weight: 600;
-  }
-  .mockup-main {
-    display: flex;
+    justify-content: center;
     flex-direction: column;
-    gap: 16px;
-  }
-  .mockup-metrics {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 12px;
   }
-  .mockup-metric {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 16px;
+  .browser-screenshot-fallback::before {
+    content: '📸';
+    font-size: 42px;
+    opacity: 0.4;
   }
-  .mockup-metric-label {
-    font-size: 10px;
-    font-weight: 800;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 6px;
+
+  /* Legenda do painel */
+  .interface-caption {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
   }
-  .mockup-metric-value {
-    font-family: var(--font-mono);
-    font-size: 22px;
-    font-weight: 800;
+  .interface-caption h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
     color: var(--text-main);
   }
-  .mockup-metric-value.green { color: var(--emerald); }
-  .mockup-metric-value.cyan { color: var(--cyan); }
-
-  .mockup-panel {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 18px;
-  }
-  .mockup-panel-title {
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 14px;
-  }
-  .mockup-course-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(30, 42, 68, 0.5);
-    font-size: 13px;
-  }
-  .mockup-course-row:last-child { border-bottom: none; }
-  .mockup-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .mockup-course-name { flex: 1; color: var(--text-main); font-weight: 500; }
-  .mockup-course-pct {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 700;
+  .interface-caption p {
+    font-size: 0.98rem;
     color: var(--text-muted);
+    line-height: 1.6;
   }
-  .mockup-progress {
-    height: 4px;
-    background: var(--border-color);
-    border-radius: 99px;
-    overflow: hidden;
-    margin-top: 6px;
-  }
-  .mockup-progress-fill {
-    height: 100%;
-    border-radius: 99px;
-    background: var(--emerald);
+
+  @media (max-width: 760px) {
+    .interface-tabs {
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-color) transparent;
+      margin-left: -24px;
+      margin-right: -24px;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    .interface-tab {
+      padding: 9px 16px;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .interface-caption h3 { font-size: 1.15rem; }
+    .interface-caption p { font-size: 0.92rem; }
   }
 
   /* ============ ARCHITECTURE DIAGRAM ============ */
@@ -1142,9 +1126,7 @@
 </head>
 <body>
 
-<!-- =========================================================================
-     SVG SPRITE — logo My UniStation (reutilizável em toda a página)
-     ========================================================================= -->
+<!-- SVG SPRITE — logo My UniStation -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
     <linearGradient id="musLogoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -1195,7 +1177,6 @@
     </a>
 
     <div class="nav-right">
-      <!-- ★ MOBILE — botão hamburger (visível apenas em ecrãs ≤900px) -->
       <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMobilePanel">
         <span></span>
         <span></span>
@@ -1219,7 +1200,6 @@
   </div>
 </nav>
 
-<!-- ★ MOBILE — painel dropdown + backdrop (visíveis apenas em ecrãs ≤900px) -->
 <div class="nav-mobile-backdrop" id="navMobileBackdrop"></div>
 <ul class="nav-mobile-panel" id="navMobilePanel">
   <li><a href="#features">Funcionalidades</a></li>
@@ -1266,10 +1246,10 @@
       <div class="terminal-body">
         <div class="terminal-line">
           <span class="terminal-prompt">$</span>
-          <span class="terminal-cmd">python app.py</span>
+          <span class="terminal-cmd">python3 app.py</span>
         </div>
         <div class="terminal-output"><span class="ok">✅</span> My UniStation ativo</div>
-        <div class="terminal-output"><span class="info">🌐</span> Aceda a: http://0.0.0.0:8080</div>
+        <div class="terminal-output"><span class="info">🌐</span> Aceda a: http://localhost:8080</div>
         <div class="terminal-output"><span class="info">⚙️</span> Config: /home/ti/myunistation/config.json</div>
         <div class="terminal-output"><span class="info">💾</span> Dados: /mnt/nas/MyUni/data.json</div>
         <div class="terminal-output"><span class="warn">🛡️</span> Backups: retenção de 5 ficheiros</div>
@@ -1406,7 +1386,7 @@
         <h3 class="feature-title">Zero Instalação</h3>
         <p class="feature-desc">
           Sem base de dados. Sem Docker. Sem npm install. Copias o app.py,
-          corres python app.py, está a funcionar.
+          corres python3 app.py, está a funcionar.
         </p>
         <span class="feature-tag amber">Zero-config</span>
       </div>
@@ -1414,75 +1394,144 @@
   </div>
 </section>
 
-<!-- INTERFACE -->
+<!-- INTERFACE — TABS COM SCREENSHOTS -->
 <section id="interface">
   <div class="container">
     <span class="section-eyebrow reveal">Interface</span>
     <h2 class="section-title reveal reveal-delay-1">
       Simples de olhar. Poderoso por dentro.
     </h2>
+    <p class="section-sub reveal reveal-delay-2">
+      Cinco ecrãs, cinco problemas resolvidos. Explora por ti.
+    </p>
 
-    <div class="mockup-wrapper reveal reveal-delay-2">
-      <div class="browser-mockup">
-        <div class="browser-bar">
-          <span class="terminal-dot r"></span>
-          <span class="terminal-dot y"></span>
-          <span class="terminal-dot g"></span>
-          <div class="browser-url">http://192.168.1.10:8080</div>
-        </div>
-        <div class="browser-content">
-          <aside class="mockup-sidebar">
-            <div class="mockup-sidebar-title">Navegação</div>
-            <div class="mockup-nav-item active">📊 Resumo Académico</div>
-            <div class="mockup-nav-item">📅 Calendário Geral</div>
-            <div class="mockup-nav-item">🗺️ Roteiro Semanal</div>
-            <div class="mockup-nav-item">📋 Atividades Sumativas</div>
-            <div class="mockup-nav-item">📘 PUC das UC</div>
-          </aside>
+    <!-- Tabs -->
+    <div class="interface-tabs reveal reveal-delay-3">
+      <button class="interface-tab active" data-tab="resumo" type="button">📊 Resumo</button>
+      <button class="interface-tab" data-tab="roteiro" type="button">🗺️ Roteiro</button>
+      <button class="interface-tab" data-tab="entregas" type="button">📋 Entregas</button>
+      <button class="interface-tab" data-tab="puc" type="button">📘 PUC</button>
+      <button class="interface-tab" data-tab="calendario" type="button">📅 Calendário</button>
+    </div>
 
-          <div class="mockup-main">
-            <div class="mockup-metrics">
-              <div class="mockup-metric">
-                <div class="mockup-metric-label">ECTS</div>
-                <div class="mockup-metric-value">72 / 180</div>
-              </div>
-              <div class="mockup-metric">
-                <div class="mockup-metric-label">Média</div>
-                <div class="mockup-metric-value green">15.4</div>
-              </div>
-              <div class="mockup-metric">
-                <div class="mockup-metric-label">Em Curso</div>
-                <div class="mockup-metric-value cyan">5</div>
-              </div>
+    <!-- Painéis -->
+    <div class="interface-panels reveal reveal-delay-4">
+
+      <!-- RESUMO -->
+      <div class="interface-panel active" data-panel="resumo">
+        <div class="mockup-wrapper">
+          <div class="browser-mockup">
+            <div class="browser-bar">
+              <span class="terminal-dot r"></span>
+              <span class="terminal-dot y"></span>
+              <span class="terminal-dot g"></span>
+              <div class="browser-url">http://localhost:8080</div>
             </div>
-
-            <div class="mockup-panel">
-              <div class="mockup-panel-title">⚡ UC em Frequência</div>
-
-              <div class="mockup-course-row">
-                <span class="mockup-dot" style="background:#2563eb"></span>
-                <span class="mockup-course-name">Sistemas em Rede</span>
-                <span class="mockup-course-pct">68%</span>
-              </div>
-              <div class="mockup-progress"><div class="mockup-progress-fill" style="width:68%; background:#2563eb"></div></div>
-
-              <div class="mockup-course-row" style="margin-top:12px;">
-                <span class="mockup-dot" style="background:#8b5cf6"></span>
-                <span class="mockup-course-name">Programação Orientada a Objetos</span>
-                <span class="mockup-course-pct">82%</span>
-              </div>
-              <div class="mockup-progress"><div class="mockup-progress-fill" style="width:82%; background:#8b5cf6"></div></div>
-
-              <div class="mockup-course-row" style="margin-top:12px;">
-                <span class="mockup-dot" style="background:#059669"></span>
-                <span class="mockup-course-name">Linguagens e Computação</span>
-                <span class="mockup-course-pct">54%</span>
-              </div>
-              <div class="mockup-progress"><div class="mockup-progress-fill" style="width:54%; background:#059669"></div></div>
-            </div>
+            <img class="browser-screenshot"
+                 src="../screenshots/my_unistation_resumo.png"
+                 alt="Resumo Académico — progresso, média ponderada e UCs em curso"
+                 loading="lazy"
+                 onerror="this.outerHTML='&lt;div class=&quot;browser-screenshot-fallback&quot;&gt;Adiciona o ficheiro &lt;code&gt;screenshots/my_unistation_resumo.png&lt;/code&gt; na raiz do repositório&lt;/div&gt;'">
           </div>
         </div>
+        <div class="interface-caption">
+          <h3>Resumo Académico</h3>
+          <p>O painel de entrada. Progresso da licenciatura, média ponderada, UCs em curso e histórico — tudo num só olhar.</p>
+        </div>
       </div>
+
+      <!-- ROTEIRO -->
+      <div class="interface-panel" data-panel="roteiro">
+        <div class="mockup-wrapper">
+          <div class="browser-mockup">
+            <div class="browser-bar">
+              <span class="terminal-dot r"></span>
+              <span class="terminal-dot y"></span>
+              <span class="terminal-dot g"></span>
+              <div class="browser-url">http://localhost:8080</div>
+            </div>
+            <img class="browser-screenshot"
+                 src="../screenshots/my_unistation_roteiro_1.png"
+                 alt="Roteiro Semanal — 17 semanas decompostas com progresso"
+                 loading="lazy"
+                 onerror="this.outerHTML='&lt;div class=&quot;browser-screenshot-fallback&quot;&gt;Adiciona o ficheiro &lt;code&gt;screenshots/my_unistation_roteiro_1.png&lt;/code&gt; na raiz do repositório&lt;/div&gt;'">
+          </div>
+        </div>
+        <div class="interface-caption">
+          <h3>Roteiro Semanal</h3>
+          <p>As 17 semanas letivas decompostas. Tópicos por UC, tags de conceitos, aberturas e fechos destacados. A semana atual fica em evidência.</p>
+        </div>
+      </div>
+
+      <!-- ENTREGAS -->
+      <div class="interface-panel" data-panel="entregas">
+        <div class="mockup-wrapper">
+          <div class="browser-mockup">
+            <div class="browser-bar">
+              <span class="terminal-dot r"></span>
+              <span class="terminal-dot y"></span>
+              <span class="terminal-dot g"></span>
+              <div class="browser-url">http://localhost:8080</div>
+            </div>
+            <img class="browser-screenshot"
+                 src="../screenshots/my_unistation_atividades.png"
+                 alt="Atividades Sumativas — tabela consolidada com ordenação"
+                 loading="lazy"
+                 onerror="this.outerHTML='&lt;div class=&quot;browser-screenshot-fallback&quot;&gt;Adiciona o ficheiro &lt;code&gt;screenshots/my_unistation_atividades.png&lt;/code&gt; na raiz do repositório&lt;/div&gt;'">
+          </div>
+        </div>
+        <div class="interface-caption">
+          <h3>Atividades Sumativas</h3>
+          <p>Todas as entregas numa tabela. Ordena por UC, data ou cotação. Marca como entregue num clique, ajusta prazos na hora.</p>
+        </div>
+      </div>
+
+      <!-- PUC -->
+      <div class="interface-panel" data-panel="puc">
+        <div class="mockup-wrapper">
+          <div class="browser-mockup">
+            <div class="browser-bar">
+              <span class="terminal-dot r"></span>
+              <span class="terminal-dot y"></span>
+              <span class="terminal-dot g"></span>
+              <div class="browser-url">http://localhost:8080</div>
+            </div>
+            <img class="browser-screenshot"
+                 src="../screenshots/my_unistation_puc.png"
+                 alt="Dossiê do PUC — transcrição integral arquivada por UC"
+                 loading="lazy"
+                 onerror="this.outerHTML='&lt;div class=&quot;browser-screenshot-fallback&quot;&gt;Adiciona o ficheiro &lt;code&gt;screenshots/my_unistation_puc.png&lt;/code&gt; na raiz do repositório&lt;/div&gt;'">
+          </div>
+        </div>
+        <div class="interface-caption">
+          <h3>Dossiê do PUC</h3>
+          <p>Apresentação, resultados de aprendizagem, metodologia, condições de aprovação e bibliografia — arquivados por UC, sempre à mão.</p>
+        </div>
+      </div>
+
+      <!-- CALENDÁRIO -->
+      <div class="interface-panel" data-panel="calendario">
+        <div class="mockup-wrapper">
+          <div class="browser-mockup">
+            <div class="browser-bar">
+              <span class="terminal-dot r"></span>
+              <span class="terminal-dot y"></span>
+              <span class="terminal-dot g"></span>
+              <div class="browser-url">http://localhost:8080</div>
+            </div>
+            <img class="browser-screenshot"
+                 src="../screenshots/my_unistation_calendario.png"
+                 alt="Calendário Geral — timeline mensal com prazos e cotações"
+                 loading="lazy"
+                 onerror="this.outerHTML='&lt;div class=&quot;browser-screenshot-fallback&quot;&gt;Adiciona o ficheiro &lt;code&gt;screenshots/my_unistation_calendario.png&lt;/code&gt; na raiz do repositório&lt;/div&gt;'">
+          </div>
+        </div>
+        <div class="interface-caption">
+          <h3>Calendário Geral</h3>
+          <p>Visão mensal de todas as aberturas, prazos e cotações. Filtra por UC, com uma cor distinta para cada disciplina.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1694,7 +1743,7 @@
 
       <div class="code-block">
         <div class="comment"># 1. Guarda o app.py numa pasta</div>
-        <div><span class="cmd">python app.py</span></div>
+        <div><span class="cmd">python3 app.py</span></div>
         <div class="comment" style="margin-top:10px;"># 2. Abre no browser</div>
         <div><span class="arrow">→</span> http://localhost:8080</div>
         <div class="comment" style="margin-top:10px;"># 3. Aponta o data.json para onde quiseres</div>
@@ -1770,7 +1819,7 @@
 
 <script>
   /* =========================================================================
-     ⚠️ ÚNICO PONTO DE CONFIGURAÇÃO — ALTERA A URL DO TEU REPOSITÓRIO AQUI
+     ⚠️ ÚNICO PONTO DE CONFIGURAÇÃO — URL do repositório GitHub
      ========================================================================= */
   const GITHUB_REPO_URL = "https://github.com/jmarques239/my-unistation";
 
@@ -1787,7 +1836,7 @@
   }, { passive: true });
 
   /* =========================================================================
-     NAV — scroll-spy: destaca o link da secção atualmente visível
+     NAV — scroll-spy
      ========================================================================= */
   const spySections = document.querySelectorAll('section[id]');
   const spyLinks = document.querySelectorAll('.nav-links a[data-spy]');
@@ -1845,7 +1894,7 @@
   revealEls.forEach(el => revealObserver.observe(el));
 
   /* =========================================================================
-     SMOOTH SCROLL com offset para nav fixa
+     SMOOTH SCROLL
      ========================================================================= */
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
@@ -1860,7 +1909,7 @@
   });
 
   /* =========================================================================
-     ★ MOBILE — Menu hamburger
+     MOBILE — Menu hamburger
      ========================================================================= */
   const navHamburger = document.getElementById('navHamburger');
   const navMobilePanel = document.getElementById('navMobilePanel');
@@ -1895,31 +1944,43 @@
     toggleMobileMenu();
   });
 
-  // Fechar ao clicar fora (no backdrop)
   navMobileBackdrop.addEventListener('click', closeMobileMenu);
 
-  // Fechar ao pressionar Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navMobilePanel.classList.contains('open')) {
       closeMobileMenu();
     }
   });
 
-  // Fechar automaticamente quando um link é clicado.
-  // O smooth scroll já está tratado pelo handler genérico de `a[href^="#"]`,
-  // por isso apenas fechamos o painel com um pequeno delay para dar tempo
-  // à animação de scroll começar.
   navMobilePanel.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       setTimeout(closeMobileMenu, 150);
     });
   });
 
-  // Fechar se a janela for redimensionada para desktop
   window.addEventListener('resize', () => {
     if (window.innerWidth > 900 && navMobilePanel.classList.contains('open')) {
       closeMobileMenu();
     }
+  });
+
+  /* =========================================================================
+     INTERFACE — Tabs de screenshots
+     ========================================================================= */
+  const interfaceTabs = document.querySelectorAll('.interface-tab');
+  const interfacePanels = document.querySelectorAll('.interface-panel');
+
+  interfaceTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetTab = tab.dataset.tab;
+      if (!targetTab) return;
+
+      interfaceTabs.forEach(t => t.classList.toggle('active', t === tab));
+
+      interfacePanels.forEach(panel => {
+        panel.classList.toggle('active', panel.dataset.panel === targetTab);
+      });
+    });
   });
 </script>
 
