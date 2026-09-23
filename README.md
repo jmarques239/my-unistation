@@ -20,6 +20,23 @@ Apresentação visual do projeto em: https://jmarques239.github.io/my-unistation
 
 Servido via GitHub Pages.
 
+## 📑 Índice
+
+**Começar aqui**
+- [🔗 Evolução do `uab-academic-dashboard-generator`](#-evolução-do-uab-academic-dashboard-generator)
+- [🚀 Como Arrancar](#-como-arrancar)
+
+**O produto**
+- [⚡ Funcionalidades](#-funcionalidades)
+- [📸 Screenshots](#-screenshots)
+- [🔒 Local-First & Privacidade](#-local-first--privacidade)
+- [⚙️ O Que Podes Configurar](#️-o-que-podes-configurar)
+
+**Detalhes técnicos**
+- [📚 Documentação](#-documentação)
+- [🤖 Desenvolvido com Apoio de Inteligência Artificial](#-desenvolvido-com-apoio-de-inteligência-artificial)
+- [📄 Licença](#-licença)
+
 ---
 
 ## 🔗 Evolução do `uab-academic-dashboard-generator`
@@ -56,7 +73,7 @@ O My UniStation não é apenas uma versão melhorada do anterior: **é a impleme
 - **Resumo Académico** — Progresso da licenciatura em ECTS, média ponderada acumulada, UCs em frequência e concluídas.
 - **Calendário Inteligente** — Timeline mensal com aberturas, prazos e cotação. Uma cor por UC.
 - **Roteiro Semanal** — As 17 semanas letivas decompostas, com tópicos, atividades e progresso.
-- **Atividades Sumativas & Edição Rápida** — Tabela consolidada de entregas com ordenação multicritério e botão `✏️ Datas` para ajustar prazos na hora quando há tolerâncias ou adiamentos no Moodle.
+- **Atividades Sumativas & Edição Rápida** — Tabela consolidada de entregas com ordenação multicritério e botão `Datas` para ajustar prazos na hora quando há tolerâncias ou adiamentos no Moodle.
 - **Dossiê do PUC** — Transcrição integral do plano de atividades e do calendário oficial de avaliação.
 - **Histórico de UCs Concluídas** — Registo de disciplinas passadas com nota final, ECTS e regime. Alimenta o cálculo da média global.
 - **Importação via IA** — Extrai o PUC (PDF → JSON) com uma prompt pronta para ChatGPT / Claude / Ollama.
@@ -64,6 +81,22 @@ O My UniStation não é apenas uma versão melhorada do anterior: **é a impleme
 - **Armazenamento Configurável** — Aponta o `data.json` para PC, NAS, Google Drive, OneDrive ou Dropbox.
 - **Backups Automáticos** — Retenção dos últimos 5 ficheiros, escrita atómica.
 - **Dark / Light Mode** — Tema persistente entre sessões.
+
+--- 
+
+## 📸 Screenshots
+
+### 💻 Vista Desktop
+| | |
+| :---: | :---: |
+| **Resumo Académico** | **Calendário Geral** |
+| ![Resumo Académico](screenshots/my_unistation_resumo.png) | ![Calendário Geral](screenshots/my_unistation_calendario.png) |
+| | |
+| **Atividades Sumativas** | **PUC das UC** |
+| ![Atividades Sumativas](screenshots/my_unistation_atividades.png) | ![PUC das UC](screenshots/my_unistation_puc.png) |
+| | |
+| **Roteiro Semanal** | **Roteiro Semanal - com alarmistica** |
+| ![Roteiro Semanal](screenshots/my_unistation_roteiro_1.png) | ![Roteiro Semanal](screenshots/my_unistation_roteiro_2.png) |
 
 ---
 
@@ -97,7 +130,7 @@ Abre `http://localhost:8080` no browser.
 
 Os launchers detetam o Python automaticamente, instalam-no se necessário (via `winget` no Windows, ou o gestor de pacotes da distro no Linux), e arrancam o servidor.
 
-📖 **Instruções completas, troubleshooting e detalhes dos launchers:** vê o [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md).
+📖 **Instruções completas, troubleshooting e detalhes dos launchers:** vê o [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md) e o [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md)
 
 ---
 
