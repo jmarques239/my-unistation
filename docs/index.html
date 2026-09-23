@@ -133,7 +133,7 @@
   .nav-right {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 12px;
   }
   .nav-links {
     display: flex;
@@ -200,6 +200,140 @@
   }
   @media (max-width: 900px) { .nav-links { display: none; } }
   @media (max-width: 500px) { .nav-github { display: none; } }
+
+  /* ============ ★ MOBILE — HAMBURGER ============ */
+  .nav-hamburger {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background: rgba(255,255,255,0.03);
+    color: var(--text-main);
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 0;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+  }
+  .nav-hamburger:hover {
+    border-color: var(--emerald);
+    background: var(--emerald-glow);
+  }
+  .nav-hamburger:active {
+    transform: scale(0.95);
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.2s ease,
+                width 0.3s ease;
+    transform-origin: center;
+  }
+  /* Estado aberto: transforma as 3 barras num X */
+  .nav-hamburger.open span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .nav-hamburger.open span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+  }
+  .nav-hamburger.open span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  /* Painel dropdown mobile */
+  .nav-mobile-panel {
+    position: fixed;
+    top: 72px;
+    left: 12px;
+    right: 12px;
+    background: rgba(10, 15, 26, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px) scale(0.98);
+    transition: opacity 0.25s ease,
+                transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                visibility 0.25s;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .nav-mobile-panel.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+  .nav-mobile-panel a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  .nav-mobile-panel a:hover,
+  .nav-mobile-panel a:active {
+    background: var(--emerald-glow);
+    color: var(--emerald);
+    padding-left: 20px;
+  }
+  .nav-mobile-panel a::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.6;
+  }
+
+  /* Backdrop escurecido atrás do painel */
+  .nav-mobile-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 98;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+  .nav-mobile-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Mostrar hamburger apenas em ecrãs pequenos */
+  @media (max-width: 900px) {
+    .nav-hamburger {
+      display: inline-flex;
+    }
+  }
+  /* Segurança: esconder painel mobile em ecrãs grandes */
+  @media (min-width: 901px) {
+    .nav-mobile-panel,
+    .nav-mobile-backdrop { display: none; }
+  }
 
   /* ============ HERO ============ */
   .hero {
@@ -1013,37 +1147,22 @@
      ========================================================================= -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <!-- Gradiente da marca: dark teal → emerald -->
     <linearGradient id="musLogoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#0b3d3d"/>
       <stop offset="45%" stop-color="#0d9488"/>
       <stop offset="100%" stop-color="#10b981"/>
     </linearGradient>
 
-    <!-- Símbolo do logo (circuito em forma de escudo/U) -->
     <symbol id="musLogo" viewBox="0 0 240 200">
-      <!-- Traços do circuito -->
       <g stroke="url(#musLogoGrad)" stroke-width="8" fill="none"
          stroke-linecap="round" stroke-linejoin="round">
-
-        <!-- Escudo exterior -->
         <path d="M 55 32 L 55 122 L 120 176 L 185 122 L 185 32"/>
-
-        <!-- Escudo intermédio -->
         <path d="M 88 56 L 88 112 L 120 145 L 152 112 L 152 56"/>
-
-        <!-- Escudo interior (parcial) -->
         <path d="M 112 78 L 112 100 L 120 108 L 128 100 L 128 78"/>
-
-        <!-- Hastes horizontais do topo (cap) -->
         <path d="M 55 32 L 100 32"/>
         <path d="M 140 32 L 185 32"/>
-
-        <!-- Antena central -->
         <path d="M 120 32 L 120 88"/>
       </g>
-
-      <!-- Nós do circuito (círculos terminais) -->
       <g fill="url(#musLogoGrad)">
         <circle cx="55"  cy="32"  r="11"/>
         <circle cx="120" cy="32"  r="11"/>
@@ -1076,6 +1195,13 @@
     </a>
 
     <div class="nav-right">
+      <!-- ★ MOBILE — botão hamburger (visível apenas em ecrãs ≤900px) -->
+      <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMobilePanel">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <ul class="nav-links" id="navLinks">
         <li><a href="#features" data-spy>Funcionalidades</a></li>
         <li><a href="#interface" data-spy>Interface</a></li>
@@ -1083,6 +1209,7 @@
         <li><a href="#comparison" data-spy>Comparação</a></li>
         <li><a href="#start" data-spy>Começar</a></li>
       </ul>
+
       <a href="#" data-github-link class="nav-github" target="_blank" rel="noopener" title="Ver no GitHub">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.3-3.2-.1-.3-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.3 2.9.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/>
@@ -1091,6 +1218,16 @@
     </div>
   </div>
 </nav>
+
+<!-- ★ MOBILE — painel dropdown + backdrop (visíveis apenas em ecrãs ≤900px) -->
+<div class="nav-mobile-backdrop" id="navMobileBackdrop"></div>
+<ul class="nav-mobile-panel" id="navMobilePanel">
+  <li><a href="#features">Funcionalidades</a></li>
+  <li><a href="#interface">Interface</a></li>
+  <li><a href="#architecture">Arquitetura</a></li>
+  <li><a href="#comparison">Comparação</a></li>
+  <li><a href="#start">Começar</a></li>
+</ul>
 
 <!-- HERO -->
 <header class="hero">
@@ -1129,7 +1266,7 @@
       <div class="terminal-body">
         <div class="terminal-line">
           <span class="terminal-prompt">$</span>
-          <span class="terminal-cmd">python3 app.py</span>
+          <span class="terminal-cmd">python app.py</span>
         </div>
         <div class="terminal-output"><span class="ok">✅</span> My UniStation ativo</div>
         <div class="terminal-output"><span class="info">🌐</span> Aceda a: http://0.0.0.0:8080</div>
@@ -1269,7 +1406,7 @@
         <h3 class="feature-title">Zero Instalação</h3>
         <p class="feature-desc">
           Sem base de dados. Sem Docker. Sem npm install. Copias o app.py,
-          corres python3 app.py, está a funcionar.
+          corres python app.py, está a funcionar.
         </p>
         <span class="feature-tag amber">Zero-config</span>
       </div>
@@ -1557,7 +1694,7 @@
 
       <div class="code-block">
         <div class="comment"># 1. Guarda o app.py numa pasta</div>
-        <div><span class="cmd">python3 app.py</span></div>
+        <div><span class="cmd">python app.py</span></div>
         <div class="comment" style="margin-top:10px;"># 2. Abre no browser</div>
         <div><span class="arrow">→</span> http://localhost:8080</div>
         <div class="comment" style="margin-top:10px;"># 3. Aponta o data.json para onde quiseres</div>
@@ -1720,6 +1857,69 @@
       const top = target.getBoundingClientRect().top + window.scrollY - 80;
       window.scrollTo({ top, behavior: 'smooth' });
     });
+  });
+
+  /* =========================================================================
+     ★ MOBILE — Menu hamburger
+     ========================================================================= */
+  const navHamburger = document.getElementById('navHamburger');
+  const navMobilePanel = document.getElementById('navMobilePanel');
+  const navMobileBackdrop = document.getElementById('navMobileBackdrop');
+
+  function openMobileMenu() {
+    navHamburger.classList.add('open');
+    navHamburger.setAttribute('aria-expanded', 'true');
+    navMobilePanel.classList.add('open');
+    navMobileBackdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileMenu() {
+    navHamburger.classList.remove('open');
+    navHamburger.setAttribute('aria-expanded', 'false');
+    navMobilePanel.classList.remove('open');
+    navMobileBackdrop.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function toggleMobileMenu() {
+    if (navMobilePanel.classList.contains('open')) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
+  navHamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMobileMenu();
+  });
+
+  // Fechar ao clicar fora (no backdrop)
+  navMobileBackdrop.addEventListener('click', closeMobileMenu);
+
+  // Fechar ao pressionar Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMobilePanel.classList.contains('open')) {
+      closeMobileMenu();
+    }
+  });
+
+  // Fechar automaticamente quando um link é clicado.
+  // O smooth scroll já está tratado pelo handler genérico de `a[href^="#"]`,
+  // por isso apenas fechamos o painel com um pequeno delay para dar tempo
+  // à animação de scroll começar.
+  navMobilePanel.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      setTimeout(closeMobileMenu, 150);
+    });
+  });
+
+  // Fechar se a janela for redimensionada para desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900 && navMobilePanel.classList.contains('open')) {
+      closeMobileMenu();
+    }
   });
 </script>
 
