@@ -184,23 +184,24 @@ my-unistation/
 ├── assets/
 │   └── my-unistation-logo.svg        # Logo oficial (vetorial)
 │
-├── screenshots/                      # Capturas de ecrã usadas no README e no Website
-│   ├── my_unistation_resumo.png
-│   ├── my_unistation_roteiro_1.png
-│   ├── my_unistation_roteiro_2.png
-│   ├── my_unistation_atividades.png
-│   ├── my_unistation_puc.png
-│   └── my_unistation_calendario.png
-│
 ├── prompt/
 │   └── Master_prompt.md              # Briefing original do projeto              
 │
 └── docs/
+    ├── .nojekyll
     ├── index.html                    # Website (GitHub Pages)
     ├── GETTING-STARTED.md            # Guia de arranque
     ├── TROUBLESHOOTING.md            # Problemas comuns
     ├── FILE_LOCATION.md              # Onde ficam os ficheiros
-    └── ARCHITECTURE.md               # Arquitetura técnica
+    ├── ARCHITECTURE.md               # Arquitetura técnica
+    └── screenshots/
+        ├── my_unistation_resumo.png
+        ├── my_unistation_roteiro_1.png
+        ├── my_unistation_roteiro_2.png
+        ├── my_unistation_roteiro_3.png
+        ├── my_unistation_atividades.png
+        ├── my_unistation_puc.png
+        └── my_unistation_calendario.png   
 ```
 
 **Ficheiros gerados em runtime** (no `.gitignore`):

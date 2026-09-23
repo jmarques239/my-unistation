@@ -90,13 +90,13 @@ O My UniStation não é apenas uma versão melhorada do anterior: **é a impleme
 | | |
 | :---: | :---: |
 | **Resumo Académico** | **Calendário Geral** |
-| ![Resumo Académico](screenshots/my_unistation_resumo.png) | ![Calendário Geral](screenshots/my_unistation_calendario.png) |
+| ![Resumo Académico](docs/screenshots/my_unistation_resumo.png) | ![Calendário Geral](docs/screenshots/my_unistation_calendario.png) |
 | | |
 | **Atividades Sumativas** | **PUC das UC** |
-| ![Atividades Sumativas](screenshots/my_unistation_atividades.png) | ![PUC das UC](screenshots/my_unistation_puc.png) |
+| ![Atividades Sumativas](docs/screenshots/my_unistation_atividades.png) | ![PUC das UC](docs/screenshots/my_unistation_puc.png) |
 | | |
 | **Roteiro Semanal** | **Roteiro Semanal - com alarmistica** |
-| ![Roteiro Semanal](screenshots/my_unistation_roteiro_1.png) | ![Roteiro Semanal](screenshots/my_unistation_roteiro_2.png) |
+| ![Roteiro Semanal](docs/screenshots/my_unistation_roteiro_1.png) | ![Roteiro Semanal](docs/screenshots/my_unistation_roteiro_2.png) |
 
 ---
 
