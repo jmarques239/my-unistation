@@ -853,11 +853,13 @@
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
-    overflow: hidden;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     margin-top: 20px;
   }
   .comparison-table {
     width: 100%;
+    min-width: 640px;
     border-collapse: collapse;
     font-size: 14.5px;
   }
@@ -893,9 +895,16 @@
   }
   .check { color: var(--emerald); font-weight: 800; }
   @media (max-width: 760px) {
-    .comparison-table { font-size: 12.5px; }
+    .comparison-table { font-size: 13px; }
     .comparison-table thead th,
-    .comparison-table td { padding: 12px 10px; }
+    .comparison-table td { padding: 12px 14px; }
+    .comparison-table thead th:first-child,
+    .comparison-table td:first-child {
+      position: sticky;
+      left: 0;
+      background: var(--bg-surface);
+      z-index: 1;
+    }
   }
 
   /* ============ CTA ============ */
