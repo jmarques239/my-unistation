@@ -130,7 +130,7 @@ Abre `http://localhost:8080` no browser.
 
 Os launchers detetam o Python automaticamente, instalam-no se necessário (via `winget` no Windows, ou o gestor de pacotes da distro no Linux), e arrancam o servidor.
 
-📖 **Instruções completas, troubleshooting e detalhes dos launchers:** vê o [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md) e o [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md)
+📖 **Instruções completas, troubleshooting e detalhes dos launchers:** vê o [`docs/GETTING_STARTED.md`](docs/GETTING_STARTED.md) e o [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md)
 
 ---
 
@@ -163,7 +163,7 @@ Nome do aluno e licenciatura. Aparece na barra superior da aplicação.
 
 | Documento | Conteúdo |
 |---|---|
-| [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md) | Requisitos, instalação detalhada, launchers automáticos |
+| [`docs/GETTING-STARTED.md`](docs/GETTING_STARTED.md) | Requisitos, instalação detalhada, launchers automáticos |
 | [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) | Problemas comuns e como os resolver |
 | [`docs/FILE_LOCATION.md`](docs/FILE_LOCATION.md) | Onde ficam os ficheiros e como movê-los |
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Diagrama, API HTTP, garantias técnicas, estrutura do projeto |

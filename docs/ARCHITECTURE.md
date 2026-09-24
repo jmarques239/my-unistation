@@ -190,7 +190,7 @@ my-unistation/
 └── docs/
     ├── .nojekyll
     ├── index.html                    # Website (GitHub Pages)
-    ├── GETTING-STARTED.md            # Guia de arranque
+    ├── GETTING_STARTED.md            # Guia de arranque
     ├── TROUBLESHOOTING.md            # Problemas comuns
     ├── FILE_LOCATION.md              # Onde ficam os ficheiros
     ├── ARCHITECTURE.md               # Arquitetura técnica
