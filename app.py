@@ -2511,7 +2511,7 @@ function renderDoneUcTable() {
       <td><span class="tag" style="background:var(--bg-card-subtle); color:var(--text-muted);">${escapeHtml(c.academicYear || '—')}</span></td>
       <td>Ano ${c.year} • Sem ${c.sem}</td>
       <td>${c.ects} ECTS</td>
-      <td>${c.model === 'uab_standard' ? 'Regime Geral UAb' : 'Flexível / PUC'}</td>
+      <td>${c.model === 'uab_standard' ? 'Regime Geral' : 'Flexível / PUC'}</td>
       <td><b style="color:var(--emerald-accent); font-family:var(--font-mono);">${finalGradeStr}</b></td>
       <td><span class="tag tag-passed">Concluída</span></td>
       <td style="text-align:right;">
