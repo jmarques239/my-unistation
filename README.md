@@ -6,7 +6,7 @@
 
 > **O teu semestre inteiro, num só ecrã — e todos os que já passaram.**
 
-Dashboard académico **local-first** para estudantes da **Universidade Aberta**. 
+Dashboard académico **local-first** para estudantes da **Universidade**. 
 Gere o semestre em curso e o histórico de todas as UCs concluídas em semestres anteriores. 
 Corre no teu computador, guarda os dados num ficheiro que é só teu, e mostra tudo o que precisas de saber.
 
@@ -43,7 +43,7 @@ Servido via GitHub Pages.
 
 O **My UniStation** é a **evolução natural** do projeto anterior [`uab-academic-dashboard-generator`](https://github.com/jmarques239/uab-academic-dashboard-generator).
 
-O conceito original - transformar PUCs oficiais da UAb em informação académica útil - foi **preservado e expandido**. 
+O conceito original - transformar PUCs oficiais em informação académica útil - foi **preservado e expandido**. 
 A diferença fundamental é arquitetural:
 
 ### A mudança de paradigma
@@ -208,4 +208,4 @@ Podes usar, modificar e distribuir livremente — em contexto pessoal ou comerci
 
 > **My UniStation é o teu semestre inteiro, transformado em clareza — sem perderes a posse dos teus dados.**
 
-Feito com ♥ para estudantes da Universidade Aberta.
+Feito com ♥ para estudantes da Universidade.

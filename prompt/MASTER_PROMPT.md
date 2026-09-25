@@ -12,7 +12,7 @@
 
 ## 🎯 Contexto
 
-Pretende-se desenvolver uma aplicação **local-first** para estudantes da **Universidade Aberta (UAb)** que permita gerir o semestre em curso **e** acumular o histórico de UCs concluídas em semestres anteriores.
+Pretende-se desenvolver uma aplicação **local-first** para estudantes da **Universidade** que permita gerir o semestre em curso **e** acumular o histórico de UCs concluídas em semestres anteriores.
 
 A aplicação deve correr inteiramente na máquina do utilizador, sem depender de serviços cloud, autenticação externa, ou qualquer tipo de telemetria. Os dados residem num único ficheiro que pertence ao utilizador.
 

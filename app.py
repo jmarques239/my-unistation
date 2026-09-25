@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-My UniStation — Dashboard académico local para a Universidade Aberta.
+My UniStation — Dashboard académico local para a Universidade.
 
 Servidor HTTP leve que:
   • Serve a aplicação single-page (HTML/CSS/JS embutidos);
@@ -41,7 +41,7 @@ DEFAULT_STATE: dict[str, Any] = {
     "schema_version": SCHEMA_VERSION,
     "profile": {
         "name": "Aluno",
-        "degree": "Engenharia Informática • UAb",
+        "degree": "Engenharia Informática",
     },
     "theme": "dark",
     "courses": [],
@@ -268,7 +268,7 @@ APP_HTML = """<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>My UniStation • UAb</title>
+  <title>My UniStation</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%230b3d3d'/%3E%3Cstop offset='1' stop-color='%2310b981'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg stroke='url(%23g)' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 20 L15 55 L50 85 L85 55 L85 20'/%3E%3Cpath d='M50 20 L50 50'/%3E%3C/g%3E%3Cg fill='url(%23g)'%3E%3Ccircle cx='15' cy='20' r='7'/%3E%3Ccircle cx='50' cy='20' r='7'/%3E%3Ccircle cx='85' cy='20' r='7'/%3E%3Ccircle cx='50' cy='85' r='8'/%3E%3C/g%3E%3C/svg%3E">
   <style>
     :root {
@@ -1046,7 +1046,6 @@ APP_HTML = """<!DOCTYPE html>
       </svg>
       <div class="brand-text">
         <h1>My UniStation</h1>
-        <small>Universidade Aberta</small>
       </div>
     </div>
     <div class="header-actions">
@@ -1356,7 +1355,7 @@ APP_HTML = """<!DOCTYPE html>
         <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">
           Copia a Master Prompt abaixo e cola-a no teu modelo de IA (ChatGPT, Claude ou Ollama) juntamente com o PDF do PUC para obteres o JSON exato:
         </p>
-        <div class="prompt-box-mini" id="masterPromptText">Atua como um Engenheiro de Dados Curriculares e Auditor Pedagógico da Universidade Aberta (UAb).
+        <div class="prompt-box-mini" id="masterPromptText">Atua como um Engenheiro de Dados Curriculares e Auditor Pedagógico da Universidade.
 O teu objetivo é processar o documento do Plano da Unidade Curricular (PUC) fornecido e extrair a TOTALIDADE INTEGRAL e FIDEDIGNA do seu conteúdo para uma estrutura JSON exaustiva.
 
 O PUC é a FONTE ÚNICA DA VERDADE. O JSON gerado deve cumprir um duplo propósito:
@@ -1460,7 +1459,7 @@ Schema obrigatório:
         <div class="field">
           <label>Regime Pedagógico</label>
           <select id="cModel">
-            <option value="uab_standard">Regime Geral UAb (e-Fólios + Global)</option>
+            <option value="uab_standard">Regime Geral (e-Fólios + Global)</option>
             <option value="puc_flexible">Flexível / PUC / Recurso (0-20)</option>
           </select>
         </div>
@@ -1681,7 +1680,7 @@ const SEMESTER_WEEKS = {
    ========================================================================= */
 let appState = {
   schema_version: 1,
-  profile: { name: "Aluno", degree: "Engenharia Informática • UAb" },
+  profile: { name: "Aluno", degree: "Engenharia Informática" },
   theme: DEFAULT_THEME,
   courses: [],
   notificationsActive: true,
@@ -1933,7 +1932,7 @@ function toggleGradeFieldVisibility() {
    ========================================================================= */
 function openCentralSettingsModal() {
   document.getElementById('modalSettingName').value = appState.profile.name || "Aluno";
-  document.getElementById('modalSettingDegree').value = appState.profile.degree || "Engenharia Informática • UAb";
+  document.getElementById('modalSettingDegree').value = appState.profile.degree || "Engenharia Informática";
   document.getElementById('notifActiveToggle').checked = !!appState.notificationsActive;
   document.getElementById('notifAdvanceSelect').value = appState.notifyAdvanceDays || DEFAULT_NOTIFY_ADVANCE;
   const count = (appState.mutedNotifications || []).length;
@@ -1955,7 +1954,7 @@ function closeCentralSettingsModal(e) {
 
 async function saveProfileSettings() {
   appState.profile.name = document.getElementById('modalSettingName').value.trim() || 'Aluno';
-  appState.profile.degree = document.getElementById('modalSettingDegree').value.trim() || 'Engenharia Informática • UAb';
+  appState.profile.degree = document.getElementById('modalSettingDegree').value.trim() || 'Engenharia Informática';
   render();
   await saveServerData();
 }
