@@ -47,6 +47,8 @@ Documentação técnica sobre a arquitetura, API HTTP, garantias de robustez e e
 | `MYUNISTATION_HOST` | `0.0.0.0` | IP de escuta (permite acesso em LAN) |
 | `MYUNISTATION_CONFIG` | `config.json` | Ficheiro com o caminho do data.json |
 | `MYUNISTATION_DATA` | `data.json` | Caminho predefinido da base de dados |
+
+> **Nota:** o valor de `MYUNISTATION_DATA` é usado como valor por defeito do campo `data_file` no `config.json`, quando este é criado pela primeira vez. No modo nativo, o resultado é `"data.json"` (relativo à app); no modo Docker, é `/data/data.json` (absoluto, dentro do volume). Isto garante que os dados nunca ficam em `/app/` por engano.
 ---
 
 ## 🔌 API HTTP
@@ -191,6 +193,7 @@ my-unistation/
     ├── .nojekyll
     ├── index.html                    # Website (GitHub Pages)
     ├── GETTING_STARTED.md            # Guia de arranque
+    ├── DOCKER.md                     # Arranque em Docker e comandos relativos   
     ├── TROUBLESHOOTING.md            # Problemas comuns
     ├── FILE_LOCATION.md              # Onde ficam os ficheiros
     ├── ARCHITECTURE.md               # Arquitetura técnica

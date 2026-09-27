@@ -1,7 +1,7 @@
 # 🚀 Getting Started — My UniStation
 
 Guia de instalação e arranque. 
-Cobre desde o método mais simples (Python direto) até aos launchers automáticos ( windows e linux ) para utilizadores sem conhecimentos técnicos.
+Cobre desde o método mais simples (Python direto) até aos launchers automáticos ( windows e linux ), com uma opção em Docker para quem prefere isolamento total.
 
 [← Voltar ao README principal](../README.md)
 
@@ -16,7 +16,6 @@ Não precisas de:
 - Base de dados
 - `pip install`
 - Ambiente virtual (`venv`)
-- Docker
 - Node.js
 - Internet (depois de instalado)
 
@@ -124,6 +123,34 @@ Um launcher `.command` está planeado. Por agora, usa o **Método 1** (Python di
 > ```
 
 ---
+
+### 🐳 Método 3 - Docker
+
+Para quem prefere isolamento total ou correr o My UniStation num NAS, mini-PC ou Raspberry Pi com arranque automático. O container tem tudo o que precisa (Python incluído) sem tocar no sistema anfitrião.
+
+#### Arranque rápido
+
+```bash
+git clone https://github.com/jmarques239/my-unistation.git
+cd my-unistation
+docker compose up -d
+```
+Abre http://localhost:8080 . Os dados persistem num volume Docker que sobrevive a reinícios e atualizações.
+
+#### Para parar:
+
+```bash
+docker compose down
+```
+#### O que muda em relação aos métodos 1 e 2
+
+- **Isolamento**: o My UniStation corre num container próprio, sem afetar (nem ser afetado por) o sistema anfitrião.
+- **Dependências**: não precisas de instalar Python. Tudo vive dentro da imagem Docker.
+- **Dados**: continuam num ficheiro data.json que é teu — vive num volume montado, fora do container. A filosofia local-first mantém-se intacta.
+- **Persistência**: docker compose down para o container, mas não apaga os dados. Só down -v remove o volume.
+
+📖 **Guia completo do Docker** - volumes, bind mounts, NAS, Raspberry Pi, backup, troubleshooting: vê o [`docs/DOCKER.md`](docs/DOCKER.md).
+
 
 ## 🎯 Próximos passos
 
