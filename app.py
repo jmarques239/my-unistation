@@ -34,7 +34,7 @@ BACKUP_RETENTION  = 5
 APP_DIR           = os.path.dirname(os.path.abspath(__file__))
 
 DEFAULT_CONFIG: dict[str, Any] = {
-    "data_file": "data.json",
+    "data_file": DEFAULT_DATA_FILE,
 }
 
 DEFAULT_STATE: dict[str, Any] = {

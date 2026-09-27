@@ -1,0 +1,54 @@
+# Dados do utilizador — nunca entram na imagem
+data.json
+data.json.backup-*
+config.json
+
+# Controlo de versões
+.git/
+.gitignore
+.gitattributes
+
+# Documentação e assets (desnecessários para executar)
+docs/
+assets/
+screenshots/
+prompt/
+README.md
+LICENSE
+
+# Launchers nativos (não se aplicam dentro do container)
+my_unistation_win_launch.bat
+my_unistation_linux_launch.sh
+
+# Ficheiros Docker (evitam recursão no build)
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+venv/
+.venv/
+env/
+ENV/
+
+# Sistema operativo
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+
+# Editores e IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs e temporários
+*.log
+*.tmp
+.data_*.tmp

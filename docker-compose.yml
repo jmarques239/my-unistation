@@ -1,0 +1,30 @@
+services:
+  myunistation:
+    build: .
+    image: my-unistation:latest
+    container_name: my-unistation
+    restart: unless-stopped
+
+    ports:
+      - "8080:8080"
+
+    volumes:
+      - myunistation-data:/data
+      # Bind mount alternativo (descomentar para usar):
+      # - ./data:/data
+
+    environment:
+      MYUNISTATION_HOST: "0.0.0.0"
+      MYUNISTATION_PORT: "8080"
+      MYUNISTATION_CONFIG: "/data/config.json"
+      MYUNISTATION_DATA: "/data/data.json"
+
+    security_opt:
+      - no-new-privileges:true
+
+    # Limites de recursos (útil em NAS, mini-PC ou Raspberry Pi)
+    # mem_limit: 256m
+    # cpus: 1.0
+
+volumes:
+  myunistation-data:
